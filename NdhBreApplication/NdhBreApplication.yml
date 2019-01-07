@@ -2,7 +2,7 @@ server:
   port: 9000
 ---
 spring:
-  profiles: dev
+  profiles: dev, docker-dev
 bre:
   businessrules:
     bucketname: brebucket
