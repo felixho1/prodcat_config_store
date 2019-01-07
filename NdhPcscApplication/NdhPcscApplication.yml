@@ -1,0 +1,30 @@
+server:
+  port: 9010
+bre:
+  endpoint: http://localhost:9000/transactions
+
+---
+spring:
+  profiles: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/prodcat_input_output
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+---
+spring:
+  profiles: docker-dev
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://prodcat-postgresql:5432/prodcat_input_output
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+bre:
+  endpoint: http://prodcat-bre-engine:9000/transactions

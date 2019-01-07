@@ -1,0 +1,9 @@
+server:
+  port: 9000
+---
+spring:
+  profiles: dev
+bre:
+  businessrules:
+    bucketname: brebucket
+    basedirectory: ./src/main/resources/businessrules

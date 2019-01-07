@@ -1,0 +1,43 @@
+server:
+  port: 9020
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/prodcat_input_output
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+pcemc:
+  slavecontroller:
+    executor:
+      core-pool-size: 2
+      max-pool-size: 2
+      queue-capacity: 500
+      thread-name-prefix: "slaveControllerExecutor"
+    max_segment_size: 1000
+    url: http://localhost:9010/transactions
+
+---
+spring:
+  profiles: docker-dev
+  datasource:
+    url: jdbc:postgresql://prodcat-postgresql:5432/prodcat_input_output
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+pcemc:
+  slavecontroller:
+    executor:
+      core-pool-size: 2
+      max-pool-size: 2
+      queue-capacity: 500
+      thread-name-prefix: "slaveControllerExecutor"
+    max_segment_size: 1000
+    url: http://prodcat-slave-controller:9010/transactions
